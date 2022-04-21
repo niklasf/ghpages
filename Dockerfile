@@ -2,8 +2,8 @@ FROM alpine
 RUN apk fix && \
     apk --no-cache --update add git
 
-VOLUME /git
-WORKDIR /git
+VOLUME /github/workspace
+WORKDIR /github/workspace
 
 COPY entrypoint.sh /entrypoint.sh
 
