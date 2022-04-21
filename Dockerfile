@@ -1,4 +1,8 @@
-FROM alpine/git:v2.34.2
-COPY entrypoint.sh /entrypoint.sh
+FROM alpine
+RUN apk fix && \
+    apk --no-cache --update add git
+
+VOLUME /git
+WORKDIR /git
+
 ENTRYPOINT ["/entrypoint.sh"]
-CMD []
