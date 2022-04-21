@@ -18,7 +18,7 @@ else
   REMOTE_BRANCH="gh-pages"
 fi && \
 echo - git init && \
-git init --initial-branch main && \
+(git init --initial-branch main || true) && \
 echo - git config && \
 git config user.name "${GITHUB_ACTOR}" && \
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
