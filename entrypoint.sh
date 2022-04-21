@@ -18,11 +18,6 @@ git config --global user.name "${GITHUB_ACTOR}" && \
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
 git config --global --add safe.directory "/github/workspace/$BUILD_DIR" && \
 cd "$BUILD_DIR" && \
-echo - git status && \
-if [ -z "$(git status --porcelain)" ]; then \
-    echo "Nothing to commit" && \
-    exit 0
-fi && \
 echo - git add && \
 git add . && \
 echo - git commit && \
