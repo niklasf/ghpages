@@ -1,10 +1,6 @@
 #!/bin/sh -e
 
 echo "#################################################"
-echo "Changing directory to 'BUILD_DIR' $BUILD_DIR ..."
-cd "$BUILD_DIR"
-
-echo "#################################################"
 echo "Now deploying to GitHub Pages..."
 REMOTE_REPO="https://${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git" && \
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)" && \
@@ -16,10 +12,11 @@ else
   REMOTE_BRANCH="gh-pages"
 fi && \
 echo - git init && \
-git init --initial-branch main && \
+git init --initial-branch main "$BUILD_DIR" && \
 echo - git config && \
-git config user.name "${GITHUB_ACTOR}" && \
-git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
+git config --global user.name "${GITHUB_ACTOR}" && \
+git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
+cd "$BUILD_DIR" && \
 echo - git status && \
 if [ -z "$(git status --porcelain)" ]; then \
     echo "Nothing to commit" && \
