@@ -11,12 +11,12 @@ if [[ "$REPONAME" == "$GHIO" ]]; then
 else
   REMOTE_BRANCH="gh-pages"
 fi && \
-echo - git init && \
-git init --initial-branch main "$BUILD_DIR" && \
 echo - git config && \
 git config --global user.name "${GITHUB_ACTOR}" && \
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
 git config --global --add safe.directory "*" && \
+echo - git init && \
+git init --initial-branch main "$BUILD_DIR" && \
 cd "$BUILD_DIR" && \
 echo - git add && \
 git add . && \
