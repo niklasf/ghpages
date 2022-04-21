@@ -5,4 +5,6 @@ RUN apk fix && \
 VOLUME /git
 WORKDIR /git
 
+COPY entrypoint.sh /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
